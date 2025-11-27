@@ -2,11 +2,11 @@
 
 Created by Prasad
 
-## 🧭 Overview
+## 🧭 Overview :-
 
 Amazon DynamoDB is a fully managed NoSQL database service that delivers single‑digit millisecond performance at any scale. This README provides a complete professional guide for using DynamoDB in real‑world cloud & DevOps environments.
 
-## 📂 Table of Contents
+## 📂 Table of Contents :-
 
 - Introduction
 - Architecture Diagram
@@ -34,7 +34,7 @@ Amazon DynamoDB is a fully managed NoSQL database service that delivers single�
 - Future Enhancements
 - Author
 
-## 📝 Introduction
+## 📝 Introduction :-
 
 Amazon DynamoDB is a key‑value and document database known for being:
 
@@ -44,7 +44,7 @@ Amazon DynamoDB is a key‑value and document database known for being:
 - Highly scalable
 - Cost‑effective
 
-## 🏗️ Architecture Diagram
+## 🏗️ Architecture Diagram :-
 ```
 [ Client Apps ]
        |
@@ -54,7 +54,7 @@ Amazon DynamoDB is a key‑value and document database known for being:
        v
     Streams ---> Lambda Consumers ---> S3 / Redshift / OpenSearch
 ```
-## 🔑 Key Concepts
+## 🔑 Key Concepts :-
 
 - Table – Collection of items
 - Item – Group of attributes (like a row)
@@ -63,7 +63,7 @@ Amazon DynamoDB is a key‑value and document database known for being:
 - Sort Key – Determines sort order within partitions
 - GSI/LSI – Secondary indexes for queries
 
-## 🧩 Components
+## 🧩 Components :-
 
 - DynamoDB Tables
 - Global Secondary Indexes
@@ -74,7 +74,7 @@ Amazon DynamoDB is a key‑value and document database known for being:
 - Encryption (KMS)
 - Automatic Scaling
 
-## 🏛️ Data Modeling Strategy
+## 🏛️ Data Modeling Strategy :-
 
 - Use single‑table design
 - Model access patterns first
@@ -87,7 +87,7 @@ Example partition key strategy:
 `USER#12345
 ORDER#98765`
 
-## ⚙️ Provisioned vs On‑Demand
+## ⚙️ Provisioned vs On‑Demand :-
 
 - Provisioned Mode
 - Good for predictable workloads -- Autoscaling available
@@ -95,7 +95,7 @@ ORDER#98765`
 - Pay per request
 - Best for unpredictable workloads
   
-## 🔍 Indexing
+## 🔍 Indexing :-
 
 - GSI (Global Secondary Index)
 - Different partition/sort key
@@ -103,7 +103,7 @@ ORDER#98765`
 - LSI (Local Secondary Index)
 - Same partition key, different sort key
 
-## 🔄 DynamoDB Streams
+## 🔄 DynamoDB Streams :-
 
 - Enables building event‑driven architectures.
 
@@ -114,7 +114,7 @@ Use cases:
 - Auditing
 - Replication
 
-## 🔐 Security & IAM
+## 🔐 Security & IAM :-
 
 - Enable KMS encryption
 - Use least‑privilege IAM policies
@@ -128,13 +128,13 @@ Example policy:
   "Resource": "arn:aws:dynamodb:us-east-1:123456789012:table/MyTable"
 }
 ```
-## 💾 Backup & Restore
+## 💾 Backup & Restore :-
 
 - Point‑in‑Time Recovery
 - On‑demand backups
 - Export to S3
 
-## ⚡ DAX (DynamoDB Accelerator)
+## ⚡ DAX (DynamoDB Accelerator) :-
 
 Benefits:
 
@@ -142,7 +142,7 @@ Benefits:
 - Microsecond latency
 - Great for read‑heavy applications
 
-## 💰 Pricing Breakdown
+## 💰 Pricing Breakdown :-
 
 Pricing components:
 
@@ -152,7 +152,7 @@ Pricing components:
 - Streams cost
 - Data transfer cost
 
-## 🖥️ AWS Console Guide
+## 🖥️ AWS Console Guide :-
 
 - Go to DynamoDB Console
 - Create a new table
@@ -160,7 +160,7 @@ Pricing components:
 - Enable PITR, TTL, encryption
 - Optionally create GSI/LSI
 
-## 🧪 AWS CLI Guide
+## 🧪 AWS CLI Guide :-
 
 Create a table via CLI:
 ```
@@ -176,7 +176,7 @@ Describe a table:
 
 ```aws dynamodb describe-table --table-name Users```
 
-## 🧱 CloudFormation Template
+## 🧱 CloudFormation Template :-
 ```
 Resources:
   UsersTable:
@@ -191,7 +191,7 @@ Resources:
           KeyType: HASH
       BillingMode: PAY_PER_REQUEST
 ```
-## 🧰 CDK Sample Code (TypeScript)
+## 🧰 CDK Sample Code (TypeScript) :-
 ```
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 
@@ -202,7 +202,8 @@ const table = new dynamodb.Table(this, 'Users', {
   partitionKey: { name: 'UserId', type: dynamodb.AttributeType.STRING },
 });
 ```
-## 🔧 CRUD Operations (Node.js)
+## 🔧 CRUD Operations (Node.js) :-
+
 Put Item
 ```
 await client.send(new PutItemCommand({
@@ -217,7 +218,7 @@ await client.send(new GetItemCommand({
   Key: marshall({ UserId: '101' })
 }));
 ```
-## 🏆 Best Practices
+## 🏆 Best Practices :-
 
 - Avoid hot partitions
 - Use sparse indexes
@@ -225,64 +226,64 @@ await client.send(new GetItemCommand({
 - Use DAX for caching heavy reads
 - Store large blobs in S3, not DynamoDB
 
-## 🚀 Performance Optimization
+## 🚀 Performance Optimization :-
 
 - Use write‑sharding
 - Batch operations
 - Tune WCU/RCU
 - Use adaptive capacity
 
-## 📡 Monitoring & Observability
+## 📡 Monitoring & Observability :-
 
-CloudWatch metrics
+- CloudWatch metrics
+- DynamoDB Contributor Insights
+- X-Ray tracing
+- CloudTrail logs
 
-DynamoDB Contributor Insights
+## 🛠️ Troubleshooting Guide :-
 
-X-Ray tracing
-
-CloudTrail logs
-
-🛠️ Troubleshooting Guide
 Issue	Cause	Fix
-Throttling	Exceeded RCUs/WCUs	Increase capacity / optimize data model
-Hot keys	Same partition key heavily used	Add random suffixes
-Slow queries	Using Scan	Use Query with index
-🌍 Real‑World Use Cases
 
-Session management
+- Throttling	Exceeded RCUs/WCUs	Increase capacity / optimize data model
+- Hot keys	Same partition key heavily used	Add random suffixes
+- Slow queries	Using Scan	Use Query with index
+  
+## 🌍 Real‑World Use Cases :-
 
-E‑commerce carts
+- Session management
+- E‑commerce carts
+- Social media timelines
+- IoT telemetry storage
+- Gaming leaderboards
 
-Social media timelines
+## ❓ Common Interview Questions :-
 
-IoT telemetry storage
+- Difference between GSI and LSI?
+- What is DynamoDB TTL?
+- How does adaptive capacity work?
+- What is a hot partition?
+- Explain single‑table design.
 
-Gaming leaderboards
+## 🔮 Future Enhancements :-
 
-❓ Common Interview Questions
+- Add Terraform module
+- Add TypeScript SDK examples
+- Add Serverless Framework templates
+- Add multi‑region replication example
 
-Difference between GSI and LSI?
-
-What is DynamoDB TTL?
-
-How does adaptive capacity work?
-
-What is a hot partition?
-
-Explain single‑table design.
-
-🔮 Future Enhancements
-
-Add Terraform module
-
-Add TypeScript SDK examples
-
-Add Serverless Framework templates
-
-Add multi‑region replication example
-
-👤 Author
+👤 Author :-
 
 Prasad – Cloud & DevOps Engineer
 
 ⭐ If you like this template, consider reusing it for your AWS projects!
+
+## 📩 Connect With Me :
+If you’d like to collaborate, discuss projects, or just say hello — feel free to reach out!  
+
+### 🔗 Social & Professional Links:
+- 🌐 [Portfolio Website](https://prasad-bhoite19.github.io/prasad-portfolio/)  
+- 💼 [LinkedIn](http://linkedin.com/in/prasad-bhoite-a38a64223)  
+- 🐙 [GitHub](https://github.com/Prasad-bhoite19)  
+- ✉️ [Email](prasadsb2002@gmail.com)  
+
+💬 Always open for opportunities in **Cloud, DevOps, and Full-Stack Projects**
